@@ -1,0 +1,44 @@
+﻿Using System
+Using System.Collections
+Using System.Text
+Using System.Xml
+Using System.IO
+Using NewtonSoft
+
+BegClass Program
+
+	BegSr Main Shared(*Yes) Access(*Public) Attributes(System.STAThread())
+		DclSrParm args Type(*String) Rank(1)
+
+        DclFld g Type(GenFileDescription) New()
+
+        DclFld f Type(FileDef) 
+
+        f = g.Generate("*Public/DG NET Local", "Examples", "CMastNewL2") 
+
+        Console.WriteLine(f.Type) 
+        Console.WriteLine(f.BaseFile)
+
+        ForEach fld Type(Field) Collection(f.Fields) 
+            Console.WriteLine(fld.Name)
+            Console.WriteLine(fld.Length)
+            Console.WriteLine(fld.Decimals)
+            Console.WriteLine(fld.Description)
+            Console.WriteLine(fld.LengthDecimals)
+            Console.WriteLine(fld.FullType)
+            Console.WriteLine(fld.Type)
+        EndFor 
+        
+        DclFld Json Type(*String) 
+        
+        Json = NewtonSoft.Json.JsonConvert.SerializeObject(f, Newtonsoft.Json.Formatting.Indented)
+
+        File.WriteAllText("json.txt", Json)
+       
+        Console.WriteLine("Press any key to continue...")
+        Console.ReadKey()
+	EndSr
+
+EndClass
+
+

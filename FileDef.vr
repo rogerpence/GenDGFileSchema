@@ -1,0 +1,23 @@
+﻿Using System
+Using System.Text
+
+BegClass FileDef  Access(*Public) 
+    DclProp FileName        Type(*String) Access(*Public)
+    DclProp Library         Type(*String) Access(*Public)
+    DclProp DBName          Type(*String) Access(*Public) 
+    DclProp Type            Type(*String) Access(*Public)
+    DclProp RecordLength    Type(*String) Access(*Public)
+    DclProp KeyLength       Type(*String) Access(*Public)
+    DclProp DuplicateKeys   Type(*String) Access(*Public)
+    DclProp Format          Type(*String) Access(*Public)
+    DclProp Description     Type(*String) Access(*Public)
+    DclProp BaseFile        Type(*String) Access(*Public)
+    DclProp Fields          Type(FieldCollection) Access(*Public)
+    DclProp KeyFields       Type(FieldCollection) Access(*Public)
+
+    BegConstructor Access(*Public)
+        Fields = *New FieldCollection()
+        KeyFields = *New FieldCollection()
+    EndConstructor 
+EndClass 
+
